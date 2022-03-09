@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Zipcode</string>
+    <string name="enter_lead_zip_code">Enter Lead Zip Code</string>
+    <string name="attention">ATTENTION!</string>
+    <string name="enter_valid">Please enter a valid Zip Code value</string>
+    <string name="immediate_support">Immediate support within 75 miles of city listed</string>
+    <string name="please_remind">Please remind the person you are speaking with that:</string>
+    <string name="all_prescriptions">&#2022;&#2420;&#420;All prescriptions need to be received by ROMTech 3–4 weeks prior to surgical date</string>
+    <string name="all_deliveries">&#2022;&#2420;&#420;All deliveries to patients are pre-operative within 5 days of surgical date</string>
+    <string name="first_accuangle">&#2022;&#2420;&#420;First AccuAngle is applied by surgeon or staff at time of surgery or before discharge</string>
+    <string name="patients_will_be_provided">&#2022;&#2420;&#420;Patients will be provided with educational materials by surgeon or surgeon staff</string>
+</resources>
