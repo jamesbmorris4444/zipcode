@@ -10,6 +10,10 @@
         <variable
             name="mainActivityViewModel"
             type="com.romtech.zipcode.main.MainActivityViewModel"/>
+    
+        <variable
+            name="searchResultsViewModel"
+            type="com.romtech.zipcode.main.SearchResultsViewModel"/>
     </data>
     
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +47,7 @@
                 app:boxStrokeWidthFocused="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="100dp"
                 android:hint="@string/enter_lead_zip_code"
                 android:textColorHint="#adadad"
                 android:focusableInTouchMode="true"
@@ -71,7 +75,7 @@
                 android:id="@+id/magnifying_glass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="235dp"
+                android:layout_marginTop="135dp"
                 android:layout_marginStart="20dp"
                 android:src="@drawable/ic_search_icon"
                 android:scaleType="fitXY"
@@ -84,11 +88,23 @@
             android:id="@+id/search_button"
             android:layout_width="223dp"
             android:layout_height="65dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:src="@drawable/search_button"
             android:onClick="@{() -> mainActivityViewModel.onSearchClicked()}"
             android:scaleType="fitXY"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_group"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+    
+        <include
+            android:id="@+id/search_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/search_results_dialog"
+            android:visibility="@{mainActivityViewModel.searchVisibility}"
+            android:layout_marginTop="50dp"
+            bind:searchResultsViewModel="@{searchResultsViewModel}"
+            app:layout_constraintTop_toBottomOf="@+id/search_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>

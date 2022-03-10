@@ -10,12 +10,13 @@ import org.koin.core.component.KoinComponent
 
 
 @Suppress("UNCHECKED_CAST")
-class SearchResultsViewModel(callbacks: CallbacksImpl, zipCode: ZipCode) : AndroidViewModel(callbacks.fetchActivity().application), KoinComponent {
+class SearchResultsViewModel(val callbacks: CallbacksImpl) : AndroidViewModel(callbacks.fetchActivity().application), KoinComponent {
     val cityStateClassification = ObservableField("")
-    val classificationText = ObservableField(0)
+    val classificationText = ObservableField(R.string.app_name)
     val searchTitle = ObservableField("")
     val pleaseRemindMargin = ObservableField(0)
-    init {
+
+    fun setZipCode(zipCode: ZipCode) {
         cityStateClassification.set("${zipCode.city}, ${zipCode.state} ::  Lead Class ${zipCode.classification}")
         searchTitle.set("Search Results for ${zipCode.zipCode}:")
         classificationText.set(when (zipCode.classification) {
