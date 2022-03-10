@@ -31,7 +31,9 @@ class SearchResultsDialog(private val zipCode: ZipCode): DialogFragment() {
             dismiss()
         }
         searchResultsDialogBinding.root.clipToOutline = true
-        builder.create()
+        val dialog = builder.create()
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.setCancelable(false)
         return searchResultsDialogBinding.root
     }
 

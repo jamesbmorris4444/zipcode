@@ -20,6 +20,7 @@ class SearchAlertDialog: DialogFragment() {
             }
             val dialog = builder.create()
             dialog.window?.decorView?.setBackgroundResource(R.drawable.search_alert_dialog_bg)
+            dialog.setCanceledOnTouchOutside(false)
             dialog
         } ?: throw IllegalStateException("Activity cannot be null")
     }
