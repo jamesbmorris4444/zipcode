@@ -1,7 +1,6 @@
 package com.romtech.zipcode.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,15 +15,11 @@ import kotlinx.android.synthetic.main.search_results_dialog.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class SearchResultsDialog(private val leadZipCode: String, private val leadClass: String): DialogFragment() {
+class SearchResultsDialog(private val zipCode: ZipCode): DialogFragment() {
 
     private val callbacksImpl: CallbacksImpl by lazy { CallbacksImpl(requireActivity() as MainActivity, searchResultsDialogBinding.root, null) }
-    private val searchResultsViewModel: SearchResultsViewModel by viewModel { parametersOf(callbacksImpl, "$leadZipCode:$leadClass") }
+    private val searchResultsViewModel: SearchResultsViewModel by viewModel { parametersOf(callbacksImpl, zipCode) }
     private lateinit var searchResultsDialogBinding: SearchResultsDialogBinding
-
-    init {
-        Log.d("JIMX","V="+leadZipCode+"   "+leadClass)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         searchResultsDialogBinding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.search_results_dialog, container, false) as SearchResultsDialogBinding
@@ -35,9 +30,10 @@ class SearchResultsDialog(private val leadZipCode: String, private val leadClass
         searchResultsDialogBinding.root.ok_button.setOnClickListener {
             dismiss()
         }
-        val dialog = builder.create()
-        dialog.window?.decorView?.setBackgroundResource(R.drawable.search_results_alert_bg)
+        searchResultsDialogBinding.root.clipToOutline = true
+        builder.create()
         return searchResultsDialogBinding.root
     }
 
+    override fun getTheme() = R.style.CustomAlertDialog
 }

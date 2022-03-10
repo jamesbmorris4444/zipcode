@@ -13,4 +13,8 @@
         <item name="android:textStyle">bold</item>
     </style>
     
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/search_results_alert_bg</item>
+    </style>
+    
 </resources>

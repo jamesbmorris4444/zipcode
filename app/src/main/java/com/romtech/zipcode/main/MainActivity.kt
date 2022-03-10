@@ -16,15 +16,18 @@ class MainActivity : AppCompatActivity() {
     private val callbacksImpl: CallbacksImpl by lazy { CallbacksImpl(this, activityMainBinding.root, null) }
     private val mainActivityViewModel: MainActivityViewModel by viewModel { parametersOf(callbacksImpl) }
     private lateinit var activityMainBinding: ActivityMainBinding
-    lateinit var zipCodes: HashMap<String,String>
+    lateinit var zipCodes: HashMap<String, ZipCode>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         activityMainBinding.lifecycleOwner = this
         activityMainBinding.mainActivityViewModel = mainActivityViewModel
+//        val inputStream: InputStream = resources.openRawResource(R.raw.csvzipcodes)
+//        val csvFile = CSVFile(inputStream)
+//        zipCodes = csvFile.read()
         val inputStream: InputStream = resources.openRawResource(R.raw.zipcodes)
-        val csvFile = CSVFile(inputStream)
-        zipCodes = csvFile.read()
+        val jsonFile = JSONFile(inputStream)
+        zipCodes = jsonFile.readJsonFromFile()
     }
 }

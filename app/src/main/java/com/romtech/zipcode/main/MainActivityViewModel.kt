@@ -1,6 +1,5 @@
 package com.romtech.zipcode.main
 
-import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import com.romtech.zipcode.CallbacksImpl
@@ -15,10 +14,14 @@ class MainActivityViewModel(private val callbacks: CallbacksImpl) : AndroidViewM
     }
     fun onSearchClicked() {
         if (accumString.length == 5) {
-            Log.d("JIMX","A="+callbacks.fetchActivity().zipCodes[accumString])
-            val shippingLetter: String = callbacks.fetchActivity().zipCodes[accumString] ?: "D"
-            val dialog = SearchResultsDialog(accumString, shippingLetter)
-            dialog.show(callbacks.fetchActivity().supportFragmentManager, null)
+            val zipCode: ZipCode? = callbacks.fetchActivity().zipCodes[accumString]
+            var dialog : SearchResultsDialog? = null
+            zipCode?.let {
+                dialog = SearchResultsDialog(zipCode)
+            } ?: run {
+                dialog = SearchResultsDialog(ZipCode(zipCode = accumString, state = "UnknownState", city = "UnknownCity", classification = "D", isFdc = false))
+            }
+            dialog?.show(callbacks.fetchActivity().supportFragmentManager, null)
         } else {
             val dialog = SearchAlertDialog()
             dialog.show(callbacks.fetchActivity().supportFragmentManager, null)
