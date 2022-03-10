@@ -13,7 +13,7 @@
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/search_results_alert_bg">
     
         <TextView
@@ -21,13 +21,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{searchResultsViewModel.searchTitle}"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="260dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="200dp"
             android:textSize="26sp"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/lead_class"
             app:layout_constraintLeft_toLeftOf="parent" />
         
         <TextView
@@ -35,12 +34,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{searchResultsViewModel.cityStateClassification}"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:textColor="@color/search_results_line"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/search_title"
-            app:layout_constraintBottom_toTopOf="@+id/immediate_support"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
     
@@ -49,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{searchResultsViewModel.classificationText}"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="10dp"
             android:textSize="18sp"
             android:paddingStart="100dp"
             android:paddingEnd="100dp"
@@ -57,7 +55,6 @@
             android:gravity="center_horizontal"
             android:textColor="@color/search_results_line"
             app:layout_constraintTop_toBottomOf="@+id/lead_class"
-            app:layout_constraintBottom_toTopOf="@+id/please_remind"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
     
@@ -73,7 +70,6 @@
             android:textColor="@color/search_results_line"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/immediate_support"
-            app:layout_constraintBottom_toTopOf="@+id/all_prescriptions"
             app:layout_constraintLeft_toLeftOf="parent"/>
     
         <TextView
@@ -87,7 +83,6 @@
             android:textSize="18sp"
             android:textColor="@color/search_results_line"
             app:layout_constraintTop_toBottomOf="@+id/please_remind"
-            app:layout_constraintBottom_toTopOf="@+id/all_deliveries"
             app:layout_constraintLeft_toLeftOf="parent"/>
     
         <TextView
@@ -101,7 +96,6 @@
             android:paddingEnd="100dp"
             android:textColor="@color/search_results_line"
             app:layout_constraintTop_toBottomOf="@+id/all_prescriptions"
-            app:layout_constraintBottom_toTopOf="@+id/first_accuangle"
             app:layout_constraintLeft_toLeftOf="parent"/>
     
         <TextView
@@ -115,7 +109,6 @@
             android:paddingEnd="100dp"
             android:textColor="@color/search_results_line"
             app:layout_constraintTop_toBottomOf="@+id/all_deliveries"
-            app:layout_constraintBottom_toTopOf="@+id/patients_will_be_provided"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
     
@@ -125,13 +118,11 @@
             android:layout_height="wrap_content"
             android:text="@string/patients_will_be_provided"
             android:layout_marginTop="25dp"
-            android:layout_marginBottom="50dp"
             android:textSize="18sp"
             android:paddingStart="100dp"
             android:paddingEnd="100dp"
             android:textColor="@color/search_results_line"
             app:layout_constraintTop_toBottomOf="@+id/first_accuangle"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
     
