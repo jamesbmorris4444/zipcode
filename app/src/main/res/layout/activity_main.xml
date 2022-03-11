@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:hint="@string/enter_lead_zip_code"
+                app:focused_upper_text_hint_color="@{mainActivityViewModel.upperTextHintColor}"
                 android:textColorHint="#adadad"
                 android:focusableInTouchMode="true"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"

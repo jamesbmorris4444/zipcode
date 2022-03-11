@@ -27,27 +27,27 @@ class SearchResultsViewModel(val callbacks: CallbacksImpl) : AndroidViewModel(ca
         classificationText.set(when (zipCode.classification) {
             "A" -> {
                 pleaseRemindMargin.set(convertDpToPixels(25, callbacks.fetchActivity()))
-                immediateSupportMargin.set(convertDpToPixels(180, callbacks.fetchActivity()))
+                immediateSupportMargin.set(convertDpToPixels(195, callbacks.fetchActivity()))
                 R.string.immediate_support_a
             }
             "B" -> {
                 pleaseRemindMargin.set(convertDpToPixels(25, callbacks.fetchActivity()))
-                immediateSupportMargin.set(convertDpToPixels(180, callbacks.fetchActivity()))
+                immediateSupportMargin.set(convertDpToPixels(195, callbacks.fetchActivity()))
                 R.string.immediate_support_b
             }
             "C" -> {
                 pleaseRemindMargin.set(convertDpToPixels(25, callbacks.fetchActivity()))
-                immediateSupportMargin.set(convertDpToPixels(150, callbacks.fetchActivity()))
+                immediateSupportMargin.set(convertDpToPixels(165, callbacks.fetchActivity()))
                 R.string.immediate_support_c
             }
             "D" -> {
                 pleaseRemindMargin.set(convertDpToPixels(25, callbacks.fetchActivity()))
-                immediateSupportMargin.set(convertDpToPixels(150, callbacks.fetchActivity()))
+                immediateSupportMargin.set(convertDpToPixels(165, callbacks.fetchActivity()))
                 R.string.immediate_support_d
             }
             else -> {
                 pleaseRemindMargin.set(convertDpToPixels(25, callbacks.fetchActivity()))
-                immediateSupportMargin.set(convertDpToPixels(150, callbacks.fetchActivity()))
+                immediateSupportMargin.set(convertDpToPixels(165, callbacks.fetchActivity()))
                 R.string.immediate_support_d
             }
         })

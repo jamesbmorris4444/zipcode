@@ -13,6 +13,7 @@ class MainActivityViewModel(private val callbacks: CallbacksImpl) : AndroidViewM
     val searchVisibility = ObservableField(View.GONE)
     private var accumString = ""
     val idTextInputEditText: ObservableField<String> = ObservableField("")
+    val upperTextHintColor = ObservableField("#127d9d")
 
     init {
         callbacks.fetchRootView().id_text_input_edit_text.setOnEditorActionListener { v, actionId, event ->
