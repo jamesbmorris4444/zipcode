@@ -12,32 +12,42 @@ import org.koin.core.component.KoinComponent
 @Suppress("UNCHECKED_CAST")
 class SearchResultsViewModel(val callbacks: CallbacksImpl) : AndroidViewModel(callbacks.fetchActivity().application), KoinComponent {
     val cityStateClassification = ObservableField("")
+    val immediateSupportMargin = ObservableField(0)
     val classificationText = ObservableField(R.string.app_name)
     val searchTitle = ObservableField("")
     val pleaseRemindMargin = ObservableField(0)
 
     fun setZipCode(zipCode: ZipCode) {
-        cityStateClassification.set("${zipCode.city}, ${zipCode.state} ::  Lead Class ${zipCode.classification}")
+        if (zipCode.classification == "D" && zipCode.city.isEmpty()) {
+            cityStateClassification.set("Lead Class D")
+        } else {
+            cityStateClassification.set("${zipCode.city}, ${zipCode.state} >> Lead Class ${zipCode.classification}")
+        }
         searchTitle.set("Search Results for ${zipCode.zipCode}:")
         classificationText.set(when (zipCode.classification) {
             "A" -> {
-                pleaseRemindMargin.set(convertDpToPixels(60, callbacks.fetchActivity()))
+                pleaseRemindMargin.set(convertDpToPixels(25, callbacks.fetchActivity()))
+                immediateSupportMargin.set(convertDpToPixels(180, callbacks.fetchActivity()))
                 R.string.immediate_support_a
             }
             "B" -> {
-                pleaseRemindMargin.set(convertDpToPixels(60, callbacks.fetchActivity()))
+                pleaseRemindMargin.set(convertDpToPixels(25, callbacks.fetchActivity()))
+                immediateSupportMargin.set(convertDpToPixels(180, callbacks.fetchActivity()))
                 R.string.immediate_support_b
             }
             "C" -> {
                 pleaseRemindMargin.set(convertDpToPixels(25, callbacks.fetchActivity()))
+                immediateSupportMargin.set(convertDpToPixels(150, callbacks.fetchActivity()))
                 R.string.immediate_support_c
             }
             "D" -> {
                 pleaseRemindMargin.set(convertDpToPixels(25, callbacks.fetchActivity()))
+                immediateSupportMargin.set(convertDpToPixels(150, callbacks.fetchActivity()))
                 R.string.immediate_support_d
             }
             else -> {
                 pleaseRemindMargin.set(convertDpToPixels(25, callbacks.fetchActivity()))
+                immediateSupportMargin.set(convertDpToPixels(150, callbacks.fetchActivity()))
                 R.string.immediate_support_d
             }
         })

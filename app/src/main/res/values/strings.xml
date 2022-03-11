@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Zipcode</string>
+    <string name="version">App VER 1.0\nData VER 1.0</string>
     <string name="enter_lead_zip_code">Enter Lead Zip Code</string>
     <string name="attention">ATTENTION!</string>
     <string name="enter_valid">Please enter a valid Zip Code value</string>

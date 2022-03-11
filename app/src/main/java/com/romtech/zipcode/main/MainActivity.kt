@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.romtech.zipcode.CallbacksImpl
 import com.romtech.zipcode.R
 import com.romtech.zipcode.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import java.io.InputStream
@@ -35,12 +36,14 @@ class MainActivity : AppCompatActivity() {
 
     fun onSearchClicked(accumString: String) {
         hideKeyboard(activityMainBinding.root)
+        activityMainBinding.root.id_text_input_edit_text.setText(accumString)
+        activityMainBinding.root.id_text_input_edit_text.setSelection(accumString.length)
         if (accumString.length == 5) {
             val zip: ZipCode? = zipCodes[accumString]
             zip?.let {
                 searchResultsViewModel.setZipCode(it)
             } ?: run {
-                searchResultsViewModel.setZipCode(ZipCode(zipCode = accumString, state = "UnknownState", city = "UnknownCity", classification = "D", isFdc = false))
+                searchResultsViewModel.setZipCode(ZipCode(zipCode = accumString, state = "", city = "", classification = "D", isFdc = false))
             }
             mainActivityViewModel.searchVisibility.set(View.VISIBLE)
         } else {
@@ -49,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun hideKeyboard(view: View) {
+    private fun hideKeyboard(view: View) {
         if (view == null) return
         val inputManager = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(view.windowToken, 0)

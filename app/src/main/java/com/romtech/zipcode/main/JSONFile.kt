@@ -20,7 +20,18 @@ class JSONFile(private val inputStream: InputStream) {
         val result = StringBuilder()
         result.append(allText)
         val zipCodeData: ZipCodeData = gson.fromJson(result.toString(), ZipCodeData::class.java)
-        zipCodeData.zipCodeData.forEach { resultMap[it.zipCode] = it }
+        zipCodeData.zipCodeData.forEach {
+            val zipCodeAlreadyPresent = resultMap[it.zipCode]
+            if (zipCodeAlreadyPresent == null) {
+                resultMap[it.zipCode] = it
+            } else {
+                if (zipCodeAlreadyPresent.classification > it.classification) {
+                    resultMap.remove(zipCodeAlreadyPresent.zipCode)
+                    resultMap[it.zipCode] = it
+                }
+            }
+
+        }
         inputStream.close()
         return resultMap
     }
